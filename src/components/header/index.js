@@ -1,42 +1,59 @@
-import React from 'react'
-import './index.css'
+import React, { useState } from 'react'
+import {
+    Navbar,
+    NavbarBrand,
+    NavbarToggler,
+    Collapse,
+    NavItem,
+    NavLink,
+    Nav,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
+} from 'reactstrap'
 
-import menu from '../../assets/menu.svg'
-import carrinho from '../../assets/carrinho.svg'
+const logo = require('../../assets/logo.svg')
+const bag = require('../../assets/bag.svg')
+
 
 export default () => {
+    const [isOpen, setIsOpen] = useState(false)
+
+    const toggle = () => setIsOpen(!isOpen)
+
     return (
-    <>
-        <header className="cabecalho">
-            <div className="menu-toggle">
-                <a href="#menu">
-                    <img src={menu} alt="menu" />
-                </a>
-            </div>
-            <div className="logo">
-                <a href="#home">
-                    <div>
-                        <h1>GetCake</h1>
-                        <p>Seu bolo a um clique de distância!</p>
-                    </div>
-                </a>
-            </div>
-            <div className="menu-cabecalho">
-                <ul>
-                    <li>
-                        <a href="#quem-Somos">Quem Somos</a>
-                    </li>
-                    <li>
-                        <a href="#lojas">Lojas</a>
-                    </li>
-                </ul>
-            </div>
-            <div className="carrinho">
-                <a href="#carrinho">
-                    <img src={carrinho} alt="carrinho" />
-                </a>
-            </div>
-        </header>
-    </>
+        <React.Fragment>
+            <Navbar className="position-fixed w-100" color='light' light expand='md'>
+                <NavbarBrand href="#"> <img src={logo} height="50px" alt="logo" /> Get Cake</NavbarBrand>
+                <NavbarToggler onClick={toggle} />
+                <Collapse isOpen={isOpen} navbar>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem>
+                            <NavLink href="#">Quem Somos</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="#">Lojas</NavLink>
+                        </NavItem>
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                Produtos
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                                <DropdownItem> produto 1</DropdownItem>
+                                <DropdownItem> produto 2</DropdownItem>
+                                <DropdownItem> produto 3</DropdownItem>
+                                <DropdownItem> produto 4</DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
+                    </Nav>
+                    <Nav>
+                        <NavItem>
+                            <NavLink href="#"><img src={bag} alt="compras" height="50px" /></NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
+        </React.Fragment>
     )
 }

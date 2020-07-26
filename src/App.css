@@ -12,8 +12,9 @@ html, body, #root {
 
 body {
   background-color: #F4EEED;
+  height: 2000px;
 }
 
 body, input, button {
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
 }

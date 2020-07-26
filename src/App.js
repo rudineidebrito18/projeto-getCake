@@ -2,9 +2,12 @@ import React from 'react'
 import './App.css'
 
 import Header from './components/header/index'
+
 function App() {
     return (
-       <Header/>
+        <React.Fragment>
+            <Header></Header>
+        </React.Fragment>
     ) 
 }
 
